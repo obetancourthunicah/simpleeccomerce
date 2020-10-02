@@ -21,7 +21,7 @@ const router = express.Router();
 //               next: es un metodos para llamar a la siguiente promesa en la cola
 //                     MIDDLEWARES
 
-const productosRoutes = require('./api/productos');
+const productosRoutes = require('./api/productosdb');
 
 router.get('/version', (req, res)=>{
   let versionObj = {
