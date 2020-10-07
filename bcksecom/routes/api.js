@@ -30,7 +30,7 @@ const router = express.Router();
 //                     MIDDLEWARES
 
 const productosRoutes = require('./api/productosdb');
-
+const categoriasRoutes = require('./api/categoriasdb');
 /**
  * Ruta que permite revisar la versión vigente de el API
  * @method version
@@ -49,7 +49,7 @@ router.get('/version', (req, res)=>{
 });
 
 router.use('/productos', productosRoutes);
-
+router.use('/categorias',categoriasRoutes);
 /**
  * Ruta que permite modificar un elemento de Productos
  * @method update
