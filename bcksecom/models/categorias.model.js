@@ -5,7 +5,7 @@ function initModel(){
   model = {};
   
 
-  //ACA IRAN LOS METODOS A LA BASE
+
 
   model.getAll = function (handler) {
     db.all("SELECT * from categorias;",
@@ -33,7 +33,7 @@ function initModel(){
 
   model.addOne = function (name ,type, handler) {
     db.run(
-      "INSERT INTO categorias (name, type) VALUES (?, ?);",
+      "INSERT INTO categorias (category, type) VALUES (?, ?);",
       [name, type],
       function (err, rslt) {
         console.log(rslt);
@@ -48,7 +48,7 @@ function initModel(){
 
   model.updateOne = function (id, name, type,handler) {
     db.run(
-      "UPDATE categorias set  name = ? , type = ? where id = ?;",
+      "UPDATE categorias set  category = ? , type = ? where id = ?;",
       [ name, type, id],
       function (err, rslt) {
         console.log(rslt);
