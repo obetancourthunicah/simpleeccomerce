@@ -30,6 +30,8 @@ const router = express.Router();
 //                     MIDDLEWARES
 
 const productosRoutes = require('./api/productosdb');
+// Categorias
+const categoriaRoutes = require("./api/categoriadb");
 
 /**
  * Ruta que permite revisar la versión vigente de el API
@@ -38,17 +40,19 @@ const productosRoutes = require('./api/productosdb');
  * 
  * @returns Objeto JSON con los datos generales del API
  */
-router.get('/version', (req, res)=>{
+router.get('/version', (req, res) => {
   //var, let, const
   let versionObj = {
-    app:"Simple Eccomerce SECOM API",
+    app: "Simple Eccomerce SECOM API",
     version: "0.0.0.1",
-    state:"alpha"
+    state: "alpha"
   }
   res.status(200).json(versionObj);
 });
 
 router.use('/productos', productosRoutes);
+// Categorias
+router.use("/categorias", categoriaRoutes);
 
 /**
  * Ruta que permite modificar un elemento de Productos
@@ -60,19 +64,20 @@ router.use('/productos', productosRoutes);
  *
  * @returns {json} Resumen de la Edad modificada en el registro.
  */
-router.put('/update/:id', (req, res)=>{
+router.put('/update/:id', (req, res) => {
   let { id } = req.params;
   id = Number(id);
   let { edad } = req.body;
 
-  res.status(200).json({id, edad});
+  res.status(200).json({ id, edad });
 });
 
-router.delete('/delete/:id', (req, res)=>{
+router.delete('/delete/:id', (req, res) => {
   let { id } = req.params;
   id = Number(id);
-  res.status(200).json({id});
+  res.status(200).json({ id });
 });
 
+// Categorias
 
 module.exports = router;
