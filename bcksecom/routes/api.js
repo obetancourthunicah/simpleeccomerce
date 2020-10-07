@@ -30,7 +30,7 @@ const router = express.Router();
 //                     MIDDLEWARES
 
 const productosRoutes = require('./api/productosdb');
-const categoriasRoutes = requiere('./api/categoriasdb');
+const categoriasRoutes = require('./api/categoriasdb');
 /**
  * Ruta que permite revisar la versión vigente de el API
  * @method version
