@@ -38,12 +38,12 @@ const productosRoutes = require('./api/productosdb');
  * 
  * @returns Objeto JSON con los datos generales del API
  */
-router.get('/version', (req, res)=>{
+router.get('/version', (req, res) => {
   //var, let, const
   let versionObj = {
-    app:"Simple Eccomerce SECOM API",
+    app: "Simple Eccomerce SECOM API",
     version: "0.0.0.1",
-    state:"alpha"
+    state: "alpha"
   }
   res.status(200).json(versionObj);
 });
@@ -60,19 +60,35 @@ router.use('/productos', productosRoutes);
  *
  * @returns {json} Resumen de la Edad modificada en el registro.
  */
-router.put('/update/:id', (req, res)=>{
+router.put('/update/:id', (req, res) => {
   let { id } = req.params;
   id = Number(id);
   let { edad } = req.body;
 
-  res.status(200).json({id, edad});
+  res.status(200).json({ id, edad });
 });
 
-router.delete('/delete/:id', (req, res)=>{
+router.delete('/delete/:id', (req, res) => {
   let { id } = req.params;
   id = Number(id);
-  res.status(200).json({id});
+  res.status(200).json({ id });
 });
 
+// Categorias
+routes.route('/categorias')
+  .get((req, res, next) => {
+
+  })
+  .post((req, res, next) => {
+
+  });
+
+routes.route('/categorias/:id')
+  .delete((req, res, next) => {
+
+  })
+  .put((req, res, next) => {
+
+  });
 
 module.exports = router;
