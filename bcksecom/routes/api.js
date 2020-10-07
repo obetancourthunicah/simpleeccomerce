@@ -30,6 +30,8 @@ const router = express.Router();
 //                     MIDDLEWARES
 
 const productosRoutes = require('./api/productosdb');
+// Categorias
+const categoriaRoutes = require("./api/categoriadb");
 
 /**
  * Ruta que permite revisar la versión vigente de el API
@@ -49,6 +51,8 @@ router.get('/version', (req, res) => {
 });
 
 router.use('/productos', productosRoutes);
+// Categorias
+router.use("/categorias", categoriaRoutes);
 
 /**
  * Ruta que permite modificar un elemento de Productos
@@ -75,20 +79,5 @@ router.delete('/delete/:id', (req, res) => {
 });
 
 // Categorias
-routes.route('/categorias')
-  .get((req, res, next) => {
-
-  })
-  .post((req, res, next) => {
-
-  });
-
-routes.route('/categorias/:id')
-  .delete((req, res, next) => {
-
-  })
-  .put((req, res, next) => {
-
-  });
 
 module.exports = router;
