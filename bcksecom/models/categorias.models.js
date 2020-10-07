@@ -42,3 +42,44 @@ function initModel(){
       }
     );
   }
+
+  model.updateOne = function (id, category, type, handler) {
+    db.run(
+      "UPDATE categorias set  category = ?, type =  ? where id = ?;",
+      [ category, type, id],
+      function (err, rslt) {
+        console.log(rslt);
+        if (err) {
+          return handler(err, null);
+        } else {
+          return handler(null, true);
+        }
+      }
+    );
+  }
+
+  model.deleteOne = function (id, handler) {
+    db.run(
+      "DELETE from categorias where id = ?;",
+      [id],
+      function (err, rslt) {
+        console.log(rslt);
+        if (err) {
+          return handler(err, null);
+        } else {
+          return handler(null, true);
+        }
+      }
+    );
+  }
+
+  return model;
+}
+
+module.exports = function () {
+  if (!model) {
+    return initModel();
+  } else {
+    return model;
+  }
+}
