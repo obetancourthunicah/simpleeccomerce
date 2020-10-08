@@ -50,6 +50,19 @@ router.get('/version', (req, res)=>{
 
 router.use('/productos', productosRoutes);
 
+const categoriasRoutes = require('./api/categoriasdb');
+
+router.get('/version', (req, res)=>{
+  let versionObj = {
+    app:"Simple Eccomerce SECOM API",
+    version: "0.0.0.1",
+    state:"alpha"
+  }
+  res.status(200).json(versionObj);
+});
+
+router.use('/categorias', categoriasRoutes);
+
 /**
  * Ruta que permite modificar un elemento de Productos
  * @method update
