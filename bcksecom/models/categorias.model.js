@@ -1,7 +1,7 @@
 var db = require('./db')();
 var model = null;
 function initModel(){
-  db.run("CREATE TABLE IF NOT EXISTS productos(id INTEGER PRIMARY KEY AUTOINCREMENT, sku TEXT, name TEXT, price NUMERIC, stock INTEGER, sales INTEGER )");
+  db.run("CREATE TABLE IF NOT EXISTS productos(id INTEGER PRIMARY KEY AUTOINCREMENT, sku TEXTO, name TEXT, price NUMERIC, stock INTEGER, sales INTEGER )");
   model = {};
 
   model.getAll = function (handler) {
