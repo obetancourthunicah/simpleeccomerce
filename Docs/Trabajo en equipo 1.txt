@@ -1,0 +1,21 @@
+Trabajo en equipo
+
+5 pts Bono
+1) Fork de este repositorio
+2) Como usuario, quiero ver los productos de una o varias categoría,
+    para reducir la búsqueda a productos dentro de una categoía.
+   [ ] Crear la tabla de categorias y el modelo de categorias
+   [ ] Crear el api para el CRUD básico (get all, get one, post, put delete) de categorias
+
+    id
+    category text
+    type text [NRM => "Normal", RFG => "Refrigerado", PRC => "Perecedero", CNT => "Controlado"]
+
+3) Deben realizar un pull request al repositorio del OJBA
+4) rúbricas
+  - Los primeros 4 equipos con un pull request con commits de la mayoria de los integrantes
+  del grupo tiene los 5pts
+  - Los siguiente 4 equipos con un pull request con commits de la mayoria de los integrantes
+  tienen 3pts
+  - Los últimos 2 equipos con un pull request con commits de la mayoria de los integrantes
+  del grupo tiene los 1pts.
