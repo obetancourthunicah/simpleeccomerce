@@ -7,7 +7,7 @@ let router = express.Router();
  * @author Jose Luis Cerrato
  * @date 2020-09-08
  *
- * 
+ * @namespace api/categorias
  *
  */
 

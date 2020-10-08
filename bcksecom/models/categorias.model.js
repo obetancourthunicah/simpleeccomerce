@@ -54,7 +54,7 @@ function initModel(){
 
   model.updateOne = function (id, category, type, handler) {
     db.run(
-      "UPDATE categoria set  category =? , tyoe=? where id = ?;",
+      "UPDATE categoria set  category =? , type=? where id = ?;",
       [ category,type, id],
       function (err, rslt) {
         console.log(rslt);

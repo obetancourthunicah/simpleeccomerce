@@ -50,7 +50,7 @@ router.get('/version', (req, res)=>{
 });
 
 router.use('/productos', productosRoutes);
-router.use('/categoria', CategoriaRoutes);
+router.use('/categorias', CategoriaRoutes);
 
 /**
  * Ruta que permite modificar un elemento de Productos
