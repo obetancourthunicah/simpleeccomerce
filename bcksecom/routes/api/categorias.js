@@ -57,8 +57,8 @@ router.get('/one/:id', (req, res)=>{
  * @returns {json} El retorno
  */
 router.post('/new', (req, res)=>{
-  const { sku, name, price, stock=0} = req.body;
-  categoriaModel.addOne(sku, name, price, stock, (err, inserted)=>{
+  const { category, type } = req.body;
+  categoriaModel.addOne(category, type, (err, inserted)=>{
     if (err) {
       console.log(err);
       return res.status(503).json({ "error": "Algo salio mal." });
