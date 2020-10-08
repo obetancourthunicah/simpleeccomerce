@@ -78,10 +78,8 @@ router.put('/upd/:id', (req, res)=>{
   //do something here
   let {id} = req.params;
   id = Number(id);
-  let {stock, sales} = req.body;
-  sales = Number(sales);
-  stock = Number(stock);
-  categoriaModel.updateOne( id, stock, sales, (err, updated)=>{
+  let {category, type} = req.body;
+  categoriaModel.updateOne( id, category, type, (err, updated)=>{
     if (err) {
       console.log(err);
       return res.status(503).json({ "error": "Algo salio mal." });
