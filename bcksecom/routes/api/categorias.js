@@ -4,7 +4,11 @@ let router = express.Router();
 
 /**
  * Rutas para manejar la entidad de categorias del API
- * @author Orlando J Betancourth
+ * @author Christian Rapalo
+ * @author Samuel Rodriguez
+ * @author Hector Morales
+ * @author Omar Sanabria
+ * @author Edgar Portillo
  * @date 2020-10-07
  *
  * @namespace api/categorias
@@ -14,11 +18,11 @@ let router = express.Router();
 let categoriaModel = require('../../models/categorias.model')();
 
 /**
- * Descripcion de lo que hace
+ * Obtiene todos los registros guardados en el almacen de categorias
  * @memberof api/categorias
  * @method all
  *
- * @returns {json} El retorno
+ * @returns {json} todas las categorias
 */
 router.get('/all', (req, res)=>{
   categoriaModel.getAll( (err, rslts)=>{
@@ -31,11 +35,11 @@ router.get('/all', (req, res)=>{
 });
 
 /**
- * Descripcion de lo que hace
+ * Obtiene un registro en base al id 
  * @memberof api/categorias
  * @method ObtenerUno
- * @params {String} id
- * @returns {json} El retorno
+ * @param {String} id
+ * @returns {json} La categoria
  */
 router.get('/one/:id', (req, res)=>{
   let { id } = req.params;
@@ -50,11 +54,13 @@ router.get('/one/:id', (req, res)=>{
 });
 
 /**
- * Descripcion de lo que hace
+ * Agrega una nueva categoria
  * @memberof api/categorias
  * @method AgregarUno
- * 
- * @returns {json} El retorno
+ * @param {String} id
+ * @param {String} category
+ * @param {String} type
+ * @returns {json} Retorna valor booleano indicando si la operación fue exitosa o no
  */
 router.post('/new', (req, res)=>{
   const { category, type } = req.body;
@@ -68,11 +74,13 @@ router.post('/new', (req, res)=>{
 });
 
 /**
- * Descripcion de lo que hace
+ * Modifica una categoria en base al id
  * @memberof api/categorias
  * @method ActualizarUno
- * 
- * @returns {json} El retorno
+ * @param {String} id
+ * @param {String} category
+ * @param {String} type
+ * @returns {json} Retorna valor booleano indicando si la operación fue exitosa o no
  */
 router.put('/upd/:id', (req, res)=>{
   //do something here
@@ -89,11 +97,11 @@ router.put('/upd/:id', (req, res)=>{
 });
 
 /**
- * Descripcion de lo que hace
+ * Elimina una categoria
  * @memberof api/categorias
  * @method BorrarUno
- * 
- * @returns {json} El retorno
+ * @param {String} id
+ * @returns {json} Retorna valor booleano indicando si la operación fue exitosa o no
  */
 router.delete('/del/:id', (req, res)=>{
   let {id} = req.params;
