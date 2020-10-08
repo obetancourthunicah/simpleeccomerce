@@ -30,9 +30,10 @@ router.get('/all', (req, res)=>{
   });
 });
 
-router.get('/byCat',(req,res)=>{
-    let {typec} = req.body;
-    productModel.getPrdByCat(typec,(err,rslt)=>{
+router.get('/byCat/:typec',(req,res)=>{
+    let {typec} = req.params;
+    console.log(typec);
+    productModel.getPrdByCat(typec, (err,rslt)=>{
       if (err){
         console.log(err);
         return res.status(503).json({"error":"Algo salio mal."});

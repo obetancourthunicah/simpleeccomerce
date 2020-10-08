@@ -29,8 +29,10 @@ function initModel(){
   }
  
 model.getPrdByCat = function (typec,handler){
-  
-  db.all("SELECT productos.id, productos.sku,productos.name,productos.price,productos.stock,productos.type,productos.sales from productos JOIN categorias on productos.type = categorias.type WHERE (categorias.type like ? AND productos.type like ? ); ",[typec,typec],
+  console.log(typec);
+  console.log(typeof (typec));
+  console.log(typec.length);
+  db.all("SELECT productos.id, productos.sku,productos.name,productos.price,productos.stock,productos.type,productos.sales from productos JOIN categorias on productos.type = categorias.type WHERE productos.type = ?; ",[typec],
   function (err, rslt) {
     
     console.log(rslt);
