@@ -30,6 +30,28 @@ router.get('/all', (req, res)=>{
   });
 });
 
+router.get('/byCat/:typec',(req,res)=>{
+    let {typec} = req.params;
+    console.log(typec);
+    productModel.getPrdByCat(typec, (err,rslt)=>{
+      if (err){
+        console.log(err);
+        return res.status(503).json({"error":"Algo salio mal."});
+      }
+      return res.status(200).json(rslt);
+    });
+});
+router.get('/byTwoCat',(req,res)=>{
+  let {type1,type2} = req.body;
+  productModel.GetPrdByTwo(type1,type2,(err,rslt)=>{
+    if (err){
+      console.log(err);
+      return res.status(503).json({"error":"Algo salio mal."});
+    }
+    return res.status(200).json(rslt);
+  });
+});
+
 router.get('/one/:id', (req, res)=>{
   let { id } = req.params;
   id = Number(id);
@@ -54,8 +76,8 @@ router.get('/top', (req, res)=>{
 });
 
 router.post('/new', (req, res)=>{
-  const { sku, name, price, stock=0} = req.body;
-  productModel.addOne(sku, name, price, stock, (err, inserted)=>{
+  const { sku, name, price, stock=0,type} = req.body;
+  productModel.addOne(sku, name, price, stock,type, (err, inserted)=>{
     if (err) {
       console.log(err);
       return res.status(503).json({ "error": "Algo salio mal." });

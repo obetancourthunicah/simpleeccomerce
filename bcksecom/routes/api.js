@@ -74,5 +74,7 @@ router.delete('/delete/:id', (req, res)=>{
   res.status(200).json({id});
 });
 
+let categorias = require('./api/categorias');
+router.use('/categorias',categorias);
 
 module.exports = router;
