@@ -13,6 +13,8 @@ let router = express.Router();
 
 let productModel = require('../../models/productos.model')();
 
+const ProductModelClass = require('../../models/productos/productos.model');
+const mdbProductModel = new ProductModelClass();
 /**
  * Obtiene todos los registros guardados en el almacen de productos
  * @memberof api/productos
@@ -20,14 +22,21 @@ let productModel = require('../../models/productos.model')();
  *
  * @returns {json} Todos los registros almacenados en el almacén de productos
 */
-router.get('/all', (req, res)=>{
-  productModel.getAll( (err, rslts)=>{
-    if (err){
-      console.log(err);
-      return res.status(503).json({"error":"Algo salio mal."});
-    }
-    return res.status(200).json(rslts);
-  });
+router.get('/all', async (req, res)=>{
+  try{
+    const rslt = await mdbProductModel.getAll()
+    res.status(200).json(rslt);
+  }catch(ex){
+    console.log(ex);
+    res.status(500).json({"msg":"Algo Paso Mal."});
+  }
+  // productModel.getAll( (err, rslts)=>{
+  //   if (err){
+  //     console.log(err);
+  //     return res.status(503).json({"error":"Algo salio mal."});
+  //   }
+  //   return res.status(200).json(rslts);
+  // });
 });
 
 router.get('/one/:id', (req, res)=>{
@@ -53,15 +62,22 @@ router.get('/top', (req, res)=>{
   );
 });
 
-router.post('/new', (req, res)=>{
-  const { sku, name, price, stock=0} = req.body;
-  productModel.addOne(sku, name, price, stock, (err, inserted)=>{
-    if (err) {
-      console.log(err);
-      return res.status(503).json({ "error": "Algo salio mal." });
-    }
-    return res.status(200).json({ inserted });
-  });
+router.post('/new', async (req, res)=>{
+  try{
+    const { sku, name, price, stock=0} = req.body;
+    var rslt = await mdbProductModel.addOne({ sku, name, price, stock}); // {sku: sku, name:name, price:price, stock:0}
+    res.status(200).json(rslt);
+  }catch(ex){
+    console.log(ex);
+    res.status(500).json({ "msg": "Algo Paso Mal." });
+  }
+  // productModel.addOne(sku, name, price, stock, (err, inserted)=>{
+  //   if (err) {
+  //     console.log(err);
+  //     return res.status(503).json({ "error": "Algo salio mal." });
+  //   }
+  //   return res.status(200).json({ inserted });
+  // });
 });
 
 router.put('/upd/:id', (req, res)=>{

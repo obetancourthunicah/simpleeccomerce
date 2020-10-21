@@ -41,4 +41,11 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//Borrar esto solo para probar la conexión a la db
+var prdModle = require('./models/productos/productos.model');
+var prdModle1 = new prdModle();
+
+
+
+
 module.exports = app;
