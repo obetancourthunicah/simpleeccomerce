@@ -57,6 +57,83 @@ router.get('/one/:id', async (req, res)=>{
   // });
 });
 
+router.get('/sku/:skuid', async(req, res)=>{
+  try{
+    const { skuid } = req.params;
+    let rsltset = await mdbProductModel.getByAttibutes({sku: skuid});
+    res.status(200).json(rsltset);
+  }catch(ex){
+    console.log(ex);
+    res.status(500).json({ "msg": "Algo Paso Mal." });
+  }
+});// get sku/:skuid
+
+router.get('/stock/:stock', async (req, res) => {
+  try {
+    let { stock } = req.params;
+    stock = Number(stock);
+    // $gte == greater than or equal  | where stock >= 250
+    let rsltset = await mdbProductModel.getByAttibutes({ stock: {"$gte": stock} });
+    res.status(200).json(rsltset);
+  } catch (ex) {
+    console.log(ex);
+    res.status(500).json({ "msg": "Algo Paso Mal." });
+  }
+});// get sku/:skuid
+
+
+
+router.get('/rstock/:stock', async (req, res) => {
+  try {
+    let { stock } = req.params;
+    stock = Number(stock);
+    // $gte == greater than or equal | where stock >= 250
+    // $lte == less than or equal  | where stock <= 250
+    // $lt = less than  | where stock  < 250
+    // $gt = greater than | where stock > 250
+    // $ne = not equal to | where stock <> 250
+
+    //timestamp // Cantidad de Segundos Transcurridos desde el EPOC
+    //EPOC = 1970-01-01 00:00:00
+    // Rango de Fechas | between tm1 and tm2 | fecha >= tm1 and fecha <= tm2
+
+    let rsltset = await mdbProductModel.getByAttibutes({ stock: { "$lte": stock } });
+    res.status(200).json(rsltset);
+  } catch (ex) {
+    console.log(ex);
+    res.status(500).json({ "msg": "Algo Paso Mal." });
+  }
+});// get sku/:skuid
+
+
+router.get('/stockrange/:stock1/:stock2', async (req, res) => {
+  try {
+    let { stock1, stock2 } = req.params;
+    stock1 = Number(stock1);
+    stock2 = Number(stock2);
+    // Busqueda por rango || and 
+    let rsltset = await mdbProductModel.getByAttibutes({ stock: { "$gte": stock1, "$lte": stock2 } });
+    res.status(200).json(rsltset);
+  } catch (ex) {
+    console.log(ex);
+    res.status(500).json({ "msg": "Algo Paso Mal." });
+  }
+});// get sku/:skuid
+
+
+router.get('/categories/byname/:category', async (req, res) => {
+  try {
+    let { category } = req.params;
+    category = category.toLowerCase();
+    let rsltset = await mdbProductModel.getByAttibutesProjected({categories: category}, {"sku":1, "name":1,"price":1});
+    res.status(200).json(rsltset);
+  } catch (ex) {
+    console.log(ex);
+    res.status(500).json({ "msg": "Algo Paso Mal." });
+  }
+});// get sku/:skuid
+
+
 router.get('/top', (req, res)=>{
   productModel.getTopTen( (err, productos)=>{
     if (err) {
@@ -70,8 +147,9 @@ router.get('/top', (req, res)=>{
 
 router.post('/new', async (req, res)=>{
   try{
-    const { sku, name, price, stock=0} = req.body;
+    let { sku, name, price, stock=0} = req.body;
     price = Number(price);
+    stock = Number(stock);
     var rslt = await mdbProductModel.addOne({ sku, name, price, stock}); // {sku: sku, name:name, price:price, stock:0}
     res.status(200).json(rslt);
   }catch(ex){
@@ -120,6 +198,19 @@ router.put('/upd/:id', async (req, res)=>{
   //   }
   //   return res.status(200).json({ updated });
   // });
+});
+
+router.put('/category/add/:id', async (req, res) => {
+  try {
+    let { id } = req.params;
+    //id = Number(id);
+    let { category } = req.body;
+    let rslt = await mdbProductModel.addCategorySet(id, category);
+    res.status(200).json(rslt);
+  } catch (ex) {
+    console.log(ex);
+    res.status(500).json({ "msg": "Algo Paso Mal." });
+  }
 });
 
 router.delete('/del/:id',async (req, res)=>{
