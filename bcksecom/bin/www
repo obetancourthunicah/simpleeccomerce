@@ -3,6 +3,7 @@
 /**
  * Module dependencies.
  */
+require('dotenv').config();
 
 var MongoDB = require('../models/dbm');
 
