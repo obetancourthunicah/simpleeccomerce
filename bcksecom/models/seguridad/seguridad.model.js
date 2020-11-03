@@ -5,15 +5,16 @@ var bcrypt = require('bcrypt');
 class SeguridadModel {
   constructor() {
     this.collection = null;
-    try{
-      let db = await MongoDB.getDb();
-      this.collection = await db.collection('usuarios');
-      if (process.env.ENSURE_INDEX=="1") {
-        await this.collection.createIndex({"email": 1}, {unique:true});
+      MongoDB.getDb().then(async (db)=>{
+        this.collection =  await db.collection('usuarios');
+        if (process.env.ENSURE_INDEX == "1") {
+          await this.collection.createIndex({ "email": 1 }, { unique: true });
+        }
       }
-    }catch(ex){
-      throw(ex);
-    }
+    ).catch((ex)=>{
+        throw(ex);
+      }
+    )
   }
   async addUsuario( data ) {
     const {email, password} = data;
@@ -33,6 +34,34 @@ class SeguridadModel {
       throw(ex);
     }
   }
+
+  async getUserByEmail(email){
+    try{
+      const filter = {"email":email};
+      let User = await this.collection.findOne(filter);
+      return User;
+    }catch(ex){
+      throw(ex);
+    }
+  }
+  /**
+   * Compara la contraseña y devuelve true si son identicos.
+   *
+   * @author Orlando J Betancourth A 
+   * @date 2020-11-02
+   * @param {string} rawPswd   Contraseña que el usuario envia
+   * @param {string} crptoPswd Contraseña guardad en la DB
+   * @memberof SeguridadModel
+   */
+  async comparePassword(rawPswd, crptoPswd){
+    try{
+      //return bcrypt.compareSync(rawPswd, crptoPswd);
+      return await bcrypt.compare(rawPswd, crptoPswd);
+    }catch(ex){
+      throw(ex);
+    }
+  }
+
 }
 
 module.exports = SeguridadModel;
