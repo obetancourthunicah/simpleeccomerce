@@ -1,0 +1,512 @@
+{
+	"info": {
+		"_postman_id": "13d504a0-6829-4e75-9671-56e0b3a43de8",
+		"name": "SW202003_SECOM",
+		"description": "Colección de Pruebas del API de SECOM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "/api/productos/all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmEwYTRlODhhZThmNWIxNmU4MDZhOGMiLCJlbWFpbCI6Im9iZXRhbmNvdXJ0aHVuaWNhaEBnbWFpbC5jb20iLCJyb2xlcyI6WyJwdWJsaWMiXSwiaWF0IjoxNjA0MzY0NTM0fQ.xHEx5GqZtOjljY9o8m8BU2fyQ7zYEIJAnG2Re3SzJSA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/productos/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"productos",
+								"all"
+							]
+						},
+						"description": "Obtiene todos los productos"
+					},
+					"response": []
+				},
+				{
+					"name": "api/productos/new",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "sku",
+									"value": "PRD002",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Panadol Extra Fuerta Sobre 4 Comprimidos",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "200",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/productos/new",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"productos",
+								"new"
+							]
+						},
+						"description": "Agrega Nuevo Producto"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/productos/upd/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "stock",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "sales",
+									"value": "300",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/productos/upd/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"productos",
+								"upd",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5f8f864fd9e5399e9a408a90"
+								}
+							]
+						},
+						"description": "Modifica un Producto"
+					},
+					"response": []
+				},
+				{
+					"name": "api/productos/del/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/productos/del/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"productos",
+								"del",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5f8f868973de199eedca5047"
+								}
+							]
+						},
+						"description": "Elimina un Producto"
+					},
+					"response": []
+				},
+				{
+					"name": "api/productos/one/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/productos/one/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"productos",
+								"one",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5f8f864fd9e5399e9a408a90"
+								}
+							]
+						},
+						"description": "Obtiene un Producto por ID"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/productos/top",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/productos/top",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"productos",
+								"top"
+							]
+						},
+						"description": "Top Pouctos por Ventas"
+					},
+					"response": []
+				},
+				{
+					"name": "api/productos/byCat/:typec",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/productos/byCat/:typec",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"productos",
+								"byCat",
+								":typec"
+							],
+							"variable": [
+								{
+									"key": "typec",
+									"value": "NRM"
+								}
+							]
+						},
+						"description": "Producto por Categoría"
+					},
+					"response": []
+				},
+				{
+					"name": "api/productos/sales/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "stock",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "sales",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/productos/sales/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"productos",
+								"sales",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5f976a7bd1b3293c23da2fb6"
+								}
+							]
+						},
+						"description": "Agrega Ventas y Reduce el Stock de un Poducto"
+					},
+					"response": []
+				},
+				{
+					"name": "api/productos/sku/:skuid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/productos/sku/:skuid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"productos",
+								"sku",
+								":skuid"
+							],
+							"variable": [
+								{
+									"key": "skuid",
+									"value": "PRD002"
+								}
+							]
+						},
+						"description": "Obtiene el Producto por el SKU"
+					},
+					"response": []
+				},
+				{
+					"name": "api/productos/stockrange/:stock1/:stock2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/productos/stockrange/:stock1/:stock2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"productos",
+								"stockrange",
+								":stock1",
+								":stock2"
+							],
+							"variable": [
+								{
+									"key": "stock1",
+									"value": "100"
+								},
+								{
+									"key": "stock2",
+									"value": "1250"
+								}
+							]
+						},
+						"description": "Obtienen los Productos en un rango de Stock"
+					},
+					"response": []
+				},
+				{
+					"name": "api/productos/category/add/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "category",
+									"value": "Laboratorio",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/productos/category/add/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"productos",
+								"category",
+								"add",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5f976ab0170c403c397c2839"
+								}
+							]
+						},
+						"description": "Agrega una categoría al producto"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/productos/categories/byname/:category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/productos/categories/byname/:category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"productos",
+								"categories",
+								"byname",
+								":category"
+							],
+							"variable": [
+								{
+									"key": "category",
+									"value": "Laboratorio"
+								}
+							]
+						},
+						"description": "Obtiene los Producto por nombre de Categoría"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Security",
+			"item": [
+				{
+					"name": "api/security/signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "obetancourthunicah@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Konoha%33",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/security/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"security",
+								"signin"
+							]
+						},
+						"description": "Crea un nuevo usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/security/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "obetancourthunicah@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Konoha%33",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/security/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"security",
+								"login"
+							]
+						},
+						"description": "Login de Usuario"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,27 @@
+-87.239519, 14.053264  -- CARNES  -- Palace Garden
+-87.241676, 14.051937  -- CHILE PICANTE :) -- El Bramadero
+-87.240896, 14.052657  -- Agua Potables -- Pulpería el Roble
+-87.234709, 14.054019   -- Tortillas -- Mercadito la Concordia
+-87.233440, 14.053469  -- Camarones, Pescado -- Carro de San Lorenzo
+-87.229147, 14.055631 -- Semitas, Chilenas, Quesadillas -- Panadería en Diprova
+-87.229979, 14.053638  -- Verduras -- Champa de Viejito Buena onda en esquina de Iglesia Bautista
+-87.228501, 14.047938 -- Pastel Tres Leches -- Amistades en Anonimato :|
+-87.221357, 14.053644 -- Panqueques -- Viejito uniforme Frances Intachable Clon de Jack Nicholson
+
+Como usuario registrado, quiero registrar una ubicación de mi interes para tener un listado de ellos.
+
+Como usuario registrado, quiero saber cuale son lo locales que tengo registrado que están mas cerca de mi ubicación y tenga el producto
+que deseo para no perder tiempo en decidir donde ir.
+
+{
+  usuario: {
+    _id:
+    email:
+  },
+  georef : {
+     type: "Point", coordinates: [ longitud, latitud ]
+  },
+  tags: [],
+  nombre: "",
+  estado: "ACT"
+}
