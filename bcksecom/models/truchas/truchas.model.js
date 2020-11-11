@@ -31,17 +31,17 @@ class ProductsModel {
       }
   }
 
-  async getNear( _id, longitud, latitud){
+  async getNear( _id, longitud, latitud, meters){
       try {
         const filter = {
           "usuario._id": ObjectID(_id),
           georef: {
             "$near": {
               "$geometry": {
-                type: "Point",
+                "type": "Point",
                 coordinates: [longitud, latitud]
               },
-              $maxDistance: 10000
+              $maxDistance: meters
             }
           }
         };
@@ -57,11 +57,11 @@ class ProductsModel {
     try{
       let newTrucha = {
         usuario:{
-          _id,
+          _id:ObjectID(_id),
           email
         },
         georef: {
-          type: "Point", coordinates: [longitud, latitud]
+          "type": "Point", coordinates: [longitud, latitud]
         },
         tags,
         nombre,

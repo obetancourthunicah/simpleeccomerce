@@ -32,9 +32,11 @@ const jwtAuthMiddleware = passport.authenticate('jwt', {session:false});
 
 const securityRoutes = require('./api/seguridad');
 const productosRoutes = require('./api/productosdb');
+const truchasRoutes = require('./api/truchas');
 
 
 router.use('/security', securityRoutes);
 router.use('/productos', jwtAuthMiddleware, productosRoutes);
+router.use('/truchas', jwtAuthMiddleware, truchasRoutes);
 
 module.exports = router;
