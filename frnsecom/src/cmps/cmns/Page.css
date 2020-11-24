@@ -1,0 +1,7 @@
+.page {
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color:#888;
+  padding:1em;
+  min-height:100vh;
+}
