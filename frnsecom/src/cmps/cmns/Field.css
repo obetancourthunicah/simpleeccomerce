@@ -1,0 +1,22 @@
+.field {
+  margin-bottom:0.5em;
+}
+
+label, input {
+  display: block;
+  box-sizing: border-box;
+  width:100%;
+  text-align: left;
+}
+
+label{
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+input{
+  padding:1em 0.5em;
+  border: solid 1px #000;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px #222;
+}
