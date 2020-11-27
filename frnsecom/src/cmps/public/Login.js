@@ -1,6 +1,9 @@
 import {useState} from 'react';
+import {Link} from 'react-router-dom';
 import Page from '../cmns/Page';
 import Field from '../cmns/Field';
+
+import './Login.css';
 //Componente que maneja el estado.
 
 //React state es gestionar en variables los valores dinamicos del componente
@@ -45,6 +48,8 @@ const Login = () => {
         <Field id="email" caption="Correo" type="text" value={form.email} onChange={onChange} />
         <Field id="password" caption="Contraseña" type="password" value={form.password} onChange={onChange} />
         <button onClick={onLogin}>Login</button>
+        <br/>
+        <Link to="/">Go Home</Link>
       </section>
     </Page>
   )

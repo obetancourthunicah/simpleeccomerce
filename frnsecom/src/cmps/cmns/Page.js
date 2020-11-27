@@ -1,14 +1,18 @@
 import "./Page.css";
 import Header from './Header';
-const Page = ( { children, headding } )=>{
+import Footer from './Footer';
+const Page = ( { children, headding, footer } )=>{
+  const hofset = (41*((headding && true)?1:0)) + (59*((footer&&true)?1:0));
   let cssStyles = {
-    "minHeight": `calc(100vh${(headding && true) ? '-56px': ''})`,
+    "minHeight": (hofset > 0 )? `calc(100vh - ${hofset}px)`:`100%`,
+    "marginTop": (hofset > 0) ? `41px`: '0px'
   }
   console.log(cssStyles)
   return(
     <section className="page">
         {(headding && true ? (<Header>{headding}</Header>) : null)}
-        <section style={cssStyles}>{children}</section>
+        <section className="content" style={cssStyles}>{children}</section>
+        {(footer && true ? (<Footer></Footer>) : null)}
     </section>
   )
 }

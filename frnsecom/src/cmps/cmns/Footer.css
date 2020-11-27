@@ -1,0 +1,34 @@
+footer {
+  box-sizing: border-box;
+  display: flex;
+  background-color: #303F9F;
+  color: #fff;
+  position: fixed;
+  left:0px;
+  bottom: 0px;
+}
+footer nav ul {
+  box-sizing: border-box;
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  width: 100vw;
+  list-style: none;
+  justify-content:center;
+  align-items: center;
+}
+footer nav ul li {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+}
+
+footer nav ul li a {
+  box-sizing: border-box;
+  display: inline-block;
+  padding:1em;
+  color:#fff;
+  text-decoration: none;
+}

@@ -1,29 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import './utlts/Transitions.css';
+import { Switch, BrowserRouter as Router, Route} from 'react-router-dom';
+
+import { AnimatedSwitch } from 'react-router-transition';
+import { pageTransitions as transition, mapGlideStyles as mapStyles } from './utlts/Transitions';
+
 
 import Home from './cmps/public/Home';
 import Login from './cmps/public/Login';
 
-// function Mensaje( {children} ){
-//   return (
-//     <section>
-//     <h2>Este es un Mensaje</h2>
-//     <div>{children}</div>
-//     </section>
-//   );
-// }
-
-// function Quotes( props ){
-//   let {text} = props;
-//   return (
-//     <blockquote>{text}</blockquote>
-//   );
-// }
 
 function App() {
   return (
     <div className="App">
-      <Home/>
+    <Router>
+      <section>
+        <AnimatedSwitch
+          {...transition}
+          mapStyles={mapStyles}
+          className="switch-wrapper"
+        >
+          <Route path="/" exact component={Home} />
+          <Route path="/login" exact component={Login} />
+        </AnimatedSwitch>
+      </section>
+    </Router>
     </div>
   );
 }

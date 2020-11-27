@@ -1,17 +1,13 @@
-.homesection{
+.loginsection{
   display: flex;
   flex-direction: column;
   flex:1;
   justify-content: center;
   align-self: center;
+  width:100%;
 }
-.homesection section:nth-child(1){
-  flex:7;
-}
-.homesection section:nth-child(2){
-  flex:1;
-}
-.homesection section button{
+
+.loginsection  button{
   box-sizing: border-box;
   border:1px solid #000;
   background-color: #fff;
