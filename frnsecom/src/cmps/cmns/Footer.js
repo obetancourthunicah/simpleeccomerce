@@ -12,7 +12,7 @@ const Footer = ()=>{
         <li><NavLink to="/"><MdHome size="1.5em"/></NavLink></li>
         <li><NavLink to="/login"><FaUserPlus size="1.5em"></FaUserPlus></NavLink></li>
         <li><NavLink to="/signin"><IoMdHand size="1.5em"></IoMdHand></NavLink></li>
-        <li><NavLink to="/signin"><IoMdHand size="1.5em"></IoMdHand></NavLink></li>
+        <li><NavLink to="/productos"><IoMdHand size="1.5em"></IoMdHand></NavLink></li>
         </ul>
       </nav>
     </footer>

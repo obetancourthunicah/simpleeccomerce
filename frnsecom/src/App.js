@@ -1,6 +1,6 @@
 import './App.css';
 import './utlts/Transitions.css';
-import { Switch, BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 import { AnimatedSwitch } from 'react-router-transition';
 import { pageTransitions as transition, mapGlideStyles as mapStyles } from './utlts/Transitions';
@@ -9,6 +9,7 @@ import { pageTransitions as transition, mapGlideStyles as mapStyles } from './ut
 import Home from './cmps/public/Home';
 import Login from './cmps/public/Login';
 
+import ListProducts from './cmps/private/ListProductos';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         >
           <Route path="/" exact component={Home} />
           <Route path="/login" exact component={Login} />
+          <Route path="/productos" exact component={ListProducts}/>
         </AnimatedSwitch>
       </section>
     </Router>
