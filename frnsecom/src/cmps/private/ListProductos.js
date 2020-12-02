@@ -1,3 +1,4 @@
+import { AddButton } from '../cmns/Buttons';
 import Page from '../cmns/Page';
 
 import './ListProductos.css';
@@ -31,6 +32,7 @@ const ListProductos = ()=>{
       <ul className="productoList">
         {listElements}
       </ul>
+      <AddButton style={{position:"fixed", right:"1em", bottom:"5em"}}></AddButton>
     </Page>
   );
 }

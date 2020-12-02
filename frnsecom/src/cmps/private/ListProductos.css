@@ -1,5 +1,6 @@
 .productoList{
   padding:1em;
+  padding-bottom:2em;
   margin:-1em;
   background-color: #888;
   display:flex;

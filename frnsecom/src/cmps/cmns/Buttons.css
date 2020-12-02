@@ -1,0 +1,20 @@
+button {
+  border: 1px Solid #303f9f;
+  background-color: #fff;
+  outline: none;
+}
+
+.btnround{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0px 2px 7px #000;
+  width:4em;
+  height:4em;
+}
+
+.btnaccent{
+  background-color: #FF5722;
+  color:#FFF;
+}

@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 import Page from '../cmns/Page';
 import "./Home.css";
+
 const Home = () => {
     let [redirect, setRedirect] = useState("");
     if (redirect !==""){

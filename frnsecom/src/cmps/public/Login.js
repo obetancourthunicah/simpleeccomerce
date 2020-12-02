@@ -1,9 +1,14 @@
-import {useState} from 'react';
-import {Link} from 'react-router-dom';
+import { useState} from 'react';
+import {Link, useHistory, useLocation} from 'react-router-dom';
 import Page from '../cmns/Page';
 import Field from '../cmns/Field';
 
+import {useStateContext} from '../../utlts/Context';
+
+import axios from 'axios';
+
 import './Login.css';
+import { LOGIN_FETCHING, LOGIN_FETCHING_FAILED, LOGIN_SUCCESS } from '../../utlts/store/reducers/auth.reducer';
 //Componente que maneja el estado.
 
 //React state es gestionar en variables los valores dinamicos del componente
@@ -17,31 +22,35 @@ const Login = () => {
     password:''
   });
 
+  const [, dispatch] = useStateContext();
+  const routeHistory = useHistory();
+  const location = useLocation();
+
   const onChange = (e)=>{
     const  {name, value} = e.target;
     setForm({
       ...form, //spread Operator 
       [name] : value,
     });
-    // Spread Usage
-    // const v1 = {a:1, b:2};  const v2 = {...v1, c:3, d:4}; // {a:1, b:2, c:3, d:4}
-    // const v2 = {v1, c:3, d:4} // {v1:{a:1, b:2}, c:3, d:4}
-
-
-    // console.log(e.target);
-    // if(e.target.name =="Email"){
-    //   setEmail(e.target.value);
-    // }
-    // if (e.target.name == "Pswd") {
-    //   setPswd(e.target.value);
-    // }
   }
+
+  let { from } = location.state || { from: { pathname: "/" } };
   const onLogin = (e)=>{
     const { email, password} = form;
     //call a model (axios)
-    console.log( email);
-    console.log( password);
+    dispatch({ type: LOGIN_FETCHING });
+    axios.post(
+      '/api/security/login',
+       {email, password}
+    ).then(({data})=>{
+      dispatch({type:LOGIN_SUCCESS, payload:data});
+      routeHistory.replace(from);
+    }).catch((err)=>{
+      dispatch({ type: LOGIN_FETCHING_FAILED });
+      console.log(err);
+    })
   }
+
   return (
     <Page headding="Iniciar Sesión">
       <section className="loginsection">

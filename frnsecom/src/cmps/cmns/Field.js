@@ -1,9 +1,9 @@
 import './Field.css';
-const Field = ({id, type, caption, value, onChange}) => {
+const Field = ({id, type, caption, value, onChange, ...rest}) => {
   return (
     <div className="field">
       <label>{caption}</label>
-      <input type={type} name={id} value={value} onChange={onChange}></input>
+      <input type={type} name={id} value={value} onChange={onChange} {...rest}></input>
     </div>
   );
 }

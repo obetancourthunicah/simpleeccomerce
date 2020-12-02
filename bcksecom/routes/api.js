@@ -20,6 +20,9 @@ passport.use(
   )
 )
 
+const heartBeat = (req, res)=>{
+  res.status(200).json({ok:true});
+}
 const jwtAuthMiddleware = passport.authenticate('jwt', {session:false});
 
 /**
@@ -36,6 +39,7 @@ const truchasRoutes = require('./api/truchas');
 
 
 router.use('/security', securityRoutes);
+router.get('/heartbeat', jwtAuthMiddleware, heartBeat);
 router.use('/productos', jwtAuthMiddleware, productosRoutes);
 router.use('/truchas', jwtAuthMiddleware, truchasRoutes);
 

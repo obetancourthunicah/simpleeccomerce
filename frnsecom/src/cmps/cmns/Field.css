@@ -7,6 +7,7 @@ label, input {
   box-sizing: border-box;
   width:100%;
   text-align: left;
+  outline:none;
 }
 
 label{
@@ -19,4 +20,9 @@ input{
   border: solid 1px #000;
   border-radius: 5px;
   box-shadow: 1px 1px 3px #222;
+}
+
+input:focus{
+  border-color: #3F51b5;
+  box-shadow: 1px 1px 5px #222;
 }
