@@ -24,6 +24,21 @@ class ProductsModel{
       }
     }
 
+    async getFacet(page, items, search){
+      try{
+        const searchExp = "\\"+search+"\\";
+        const filter = {"$or":[{"sku": searchExp }, {"name":searchExp} ]}
+        let cursor = await this.collection.find(filter);
+        let total = cursor.count();
+        cursor.skip((page-1) * items);
+        cursor.limit(items);
+        let rslt = await cusor.toArray();
+        return {total, rslt};
+      }catch(ex){
+        throw (ex);
+      }
+    }
+
     async getById(id){
       try{
         const _id = new ObjectID(id);

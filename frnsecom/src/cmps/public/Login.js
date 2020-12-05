@@ -5,7 +5,7 @@ import Field from '../cmns/Field';
 
 import {useStateContext} from '../../utlts/Context';
 
-import axios from 'axios';
+import {naxios as axios, setJWT} from '../../utlts/Axios';
 
 import './Login.css';
 import { LOGIN_FETCHING, LOGIN_FETCHING_FAILED, LOGIN_SUCCESS } from '../../utlts/store/reducers/auth.reducer';
@@ -44,6 +44,7 @@ const Login = () => {
        {email, password}
     ).then(({data})=>{
       dispatch({type:LOGIN_SUCCESS, payload:data});
+      setJWT(data.jwt);
       routeHistory.replace(from);
     }).catch((err)=>{
       dispatch({ type: LOGIN_FETCHING_FAILED });

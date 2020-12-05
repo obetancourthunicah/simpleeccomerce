@@ -24,6 +24,12 @@
   flex-direction: column;
 }
 
+@media (min-width:720px){
+  .productoList li{
+    flex-basis: 22%;
+  }
+}
+
 .productoList li span{
   display:flex;
   width:60px;

@@ -31,6 +31,7 @@ function App() {
               <Route path="/" exact component={Home} />
               <Route path="/login"  component={Login} />
               <PrivateRoute path="/productos"  component={ListProducts}/>
+              
 
               <Route path="*" component={NotFound} />
             </AnimatedSwitch>

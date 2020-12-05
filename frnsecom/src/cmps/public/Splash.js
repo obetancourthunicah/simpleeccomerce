@@ -13,7 +13,7 @@ const Splash = ({ children })=>{
   const routeLocation = useLocation();
   useEffect(()=>{
     if (!(app.initialized)) {
-      setTimeout(() => { dispatch({type:APP_MIN}) }, 3000);
+      setTimeout(() => { dispatch({type:APP_MIN}) }, 1000);
       appInit(auth, dispatch, { routeHistory, routeLocation });
     }
   },[]);
