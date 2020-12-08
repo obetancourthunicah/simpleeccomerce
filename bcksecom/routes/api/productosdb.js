@@ -39,10 +39,21 @@ router.get('/all', async (req, res)=>{
   // });
 });
 
+router.get('/facet/:page/:items', async (req, res) => {
+  try {
+    const {page, items} = req.params;
+    const rslt = await mdbProductModel.getFacet(Number(page), Number(items), '');
+    res.status(200).json(rslt);
+  } catch (ex) {
+    console.log(ex);
+    res.status(500).json({ "msg": "Algo Paso Mal." });
+  }
+});
+
 router.get('/facet/:page/:items/:search', async (req, res) => {
   try {
-    const {page, items, search} = req.params;
-    const rslt = await mdbProductModel.getFacet(page, items, search);
+    const { page, items, search } = req.params;
+    const rslt = await mdbProductModel.getFacet(Number(page), Number(items), search);
     res.status(200).json(rslt);
   } catch (ex) {
     console.log(ex);

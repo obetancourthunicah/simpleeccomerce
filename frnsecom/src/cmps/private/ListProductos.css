@@ -1,36 +1,44 @@
 .productoList{
+  display: block;
+  height: calc(100vh - 100px);
+  margin: -1em;
+  overflow: auto;
+  background-color: #fff;
+}
+.productoList section{
+  margin-top:5.5em;
+  display:flex;
+  flex-wrap: wrap;
   padding:1em;
   padding-bottom:2em;
-  margin:-1em;
-  background-color: #888;
-  display:flex;
-  flex-wrap:wrap;
-  list-style: none;
-  flex:1;
-  overflow-y: scroll;
+  background-color: #fff;
   justify-content: center;
 }
-.productoList li{
+.productoList section div{
   box-sizing: border-box;
   padding:0.5em;
   margin:0.35em;
   flex-basis: 45%;
   min-height: 120px;
   background-color:#fff;
-  border-bottom:1px solid #333;
+  border:1px solid #333;
   display:flex;
   justify-content: center;
   align-items:center;
   flex-direction: column;
+  box-shadow: 1px 1px 2px #000;
 }
-
+.productoList section div.loader{
+  flex-basis: 100%;
+  padding:0.5em;
+}
 @media (min-width:720px){
-  .productoList li{
+  .productoList section div{
     flex-basis: 22%;
   }
 }
 
-.productoList li span{
+.productoList div span{
   display:flex;
   width:60px;
   height:60px;
@@ -40,4 +48,12 @@
   box-shadow: 1px 1px 3px #000;
   margin:0.5em;
 
+}
+
+.productoList .SearchField{
+  position:fixed;
+  width:100%;
+  padding:1em 1em 0.5em 1em;
+  background-color: #888;
+  box-shadow: 1px 1px 3px #333;
 }
