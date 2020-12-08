@@ -26,13 +26,16 @@ class ProductsModel{
 
     async getFacet(page, items, search){
       try{
-        const searchExp = "\\"+search+"\\";
-        const filter = {"$or":[{"sku": searchExp }, {"name":searchExp} ]}
+        const searchExp = new RegExp(search);
+        console.log(searchExp);
+        const filter = (search == '')?{}:{"$or":[{"sku": {"$regex":searchExp }}, {"name":{"$regex":searchExp}} ]};
+        // select * from productos where (sku like '%search%' or bane like '%search%');
+
         let cursor = await this.collection.find(filter);
-        let total = cursor.count();
+        let total = await cursor.count();
         cursor.skip((page-1) * items);
         cursor.limit(items);
-        let rslt = await cusor.toArray();
+        let rslt = await cursor.toArray();
         return {total, rslt};
       }catch(ex){
         throw (ex);
