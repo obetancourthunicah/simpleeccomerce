@@ -7,6 +7,22 @@ export const Button = ({children, onClick, ...rest}) =>{
     )
 }
 
+export const PrimaryButton = ({onClick, children, ...rest})=>{
+  return (
+    <Button {...rest} className="btnprimary" onClick={onClick}>
+      {children}
+    </Button>
+  )
+}
+
+export const SecondaryButton = ({ onClick, children, ...rest }) => {
+  return (
+    <Button {...rest} className="btnsecondary" onClick={onClick}>
+      {children}
+    </Button>
+  )
+}
+
 export const AddButton = ({onClick, ...rest})=>{
   return (
     <Button {...rest} className="btnround btnaccent" onClick={onClick}>

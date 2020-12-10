@@ -1,25 +1,35 @@
 import {useState} from 'react';
 import {useStateContext } from "../../utlts/Context";
+import {paxios} from "../../utlts/Axios";
 import {useHistory} from "react-router-dom";
 import Page from '../cmns/Page';
 import Field from '../cmns/Field';
-
+import { SecondaryButton, PrimaryButton } from '../cmns/Buttons';
+import { PRODUCT_RESET} from '../../utlts/store/reducers/prods.reducer'
 const NewProduct = ()=>{
     const [, dispatch] = useStateContext();
     const [form, setForm] = useState({sku:'',name:'',price:0, stock:0});
     const history = useHistory();
-  /*
-  sku:PRD010
-name:Producto 10
-price:20
-stock:200
-   */
     const onChange = (e)=>{
       e.preventDefault();
       e.stopPropagation();
       const {name, value} = e.target;
       let newForm = { ...form, [name]:value };
       setForm(newForm);
+    }
+    const addNewProducto = (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      paxios.post('/api/productos/new', form)
+        .then((data)=>{
+          console.log(data);
+          dispatch({ type: PRODUCT_RESET});
+          history.push("/productos");
+        })
+        .catch((ex)=>{
+          console.log(ex);
+          alert("Algo salio mál al ingresar");
+        })
     }
     return (
       <Page headding="Nuevo">
@@ -56,8 +66,8 @@ stock:200
           value={form.stock}
         />
         <section>
-          <button onClick={()=>{alert("Click para Agregar"+ JSON.stringify(form))}}>Agregar</button>
-          <button onClick={()=>{history.push("/productos")}}>Cancelar</button>
+          <PrimaryButton onClick={addNewProducto}>Agregar</PrimaryButton>
+          <SecondaryButton onClick={() => { history.push("/productos") }}>Cancelar</SecondaryButton>
         </section>
       </Page>
     );

@@ -5,7 +5,7 @@ import Page from '../cmns/Page';
 import {paxios} from '../../utlts/Axios';
 import './ListProductos.css';
 import { useRef } from 'react';
-import { PRODUCT_ERROR, PRODUCT_LOADED, PRODUCT_RESET , PRODUCT_LOADING} from '../../utlts/store/reducers/prods.reducer';
+import { PRODUCT_SET_CURRENT, PRODUCT_ERROR, PRODUCT_LOADED, PRODUCT_RESET , PRODUCT_LOADING} from '../../utlts/store/reducers/prods.reducer';
 import InfiniteScroll from 'react-infinite-scroller';
 import { IoIosSync } from 'react-icons/io';
 import Field from '../cmns/Field';
@@ -14,8 +14,10 @@ const ListProductos = ()=>{
   const [{prods}, dispatch] = useStateContext();
   const history = useHistory();
   const listElements = prods.products.map((o)=>{
-    return (<div key={o._id}>{o.sku} {o.name} <span>{o.price}</span></div>);
+    return (<div key={o._id}>{o.sku} {o.name} <span onClick={() => { dispatch({ type: PRODUCT_SET_CURRENT, payload:{_id:o._id}}); history.push("/productos/one");}}>{o.price}</span></div>);
   })
+
+
   const searchChange = (e)=>{
     //setSearchString(e.target.value);
     dispatch({ type: PRODUCT_RESET, payload: { searchFilter: e.target.value} });

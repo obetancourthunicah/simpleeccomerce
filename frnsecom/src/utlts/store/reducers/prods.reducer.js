@@ -42,11 +42,19 @@ const prodsReducer = (state = initialState, action = {}) =>{
         fetching: false
       }
     case PRODUCT_RESET:
-      return { ...initialState, searchFilter: action.payload.searchFilter};
+      if (action.payload){
+        return { ...initialState, searchFilter: action.payload.searchFilter};
+      } else {
+        let { searchFilter } = state;
+        return { ...initialState, searchFilter: searchFilter };
+
+      }
+
     case PRODUCT_ERROR:
       return {...state, fetching:false}
     case PRODUCT_SET_CURRENT:
-      return {...state}
+      console.log(action);
+      return { ...state, currentId: action.payload._id}
     default:
       return state;
   }

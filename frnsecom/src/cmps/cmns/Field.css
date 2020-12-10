@@ -1,5 +1,5 @@
 .field {
-  margin-bottom:0.5em;
+  margin-bottom:1em;
 }
 
 label, input {
@@ -17,12 +17,21 @@ label{
 
 input{
   padding:1em 0.5em;
-  border: solid 1px #000;
-  border-radius: 5px;
-  box-shadow: 1px 1px 3px #222;
+  border:none;
+  border-bottom: solid 1px #000;
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: 1px 3px 3px -4px #222;
+  background-color: #fff;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
 input:focus{
-  border-color: #3F51b5;
-  box-shadow: 1px 1px 5px #222;
+  border-color: #c83f00;
+  box-shadow: 1px 3px 5px -4px #c83f00;
 }
